@@ -1,3 +1,4 @@
+%%writefile deployment_files/backend_files/app.py
 # Import necessary libraries
 import numpy as np
 import joblib  # For loading the serialized model
@@ -38,10 +39,7 @@ def predict_rental_price():
       "Product_MRP": 117.08,
       "Store_Size": "Medium",
       "Store_Location_City_Type": "Tier 2",
-      "Store_Type": "Supermarket Type2",
-      "Product_Id_char": "FD",
-      "Store_Age_Years": 16,
-      "Product_Type_Category": "Non Perishables"
+      "Store_Type": "Supermarket Type2"
    }
 
     # Convert the extracted data into a Pandas DataFrame
@@ -82,9 +80,9 @@ def predict_sales_revenue_batch():
     # Calculate actual prices
     predicted_revenues = [round(float(np.exp(sales_revenue)), 2) for sales_revenue in predicted_sales_revenues]
 
-    # Create a dictionary of predictions with store IDs as keys
-    store_ids = input_data['Store_Id'].tolist()  # Assuming 'id' is the property ID column
-    output_dict = dict(zip(store_ids, predicted_revenues))  # Use actual prices
+    output_dict = {
+      "predictions": predicted_revenues
+    }
 
     # Return the predictions dictionary as a JSON response
     return output_dict

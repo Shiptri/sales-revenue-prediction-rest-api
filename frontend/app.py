@@ -1,3 +1,4 @@
+%%writefile deployment_files/frontend_files/app.py
 import streamlit as st
 import pandas as pd
 import requests
@@ -31,10 +32,7 @@ input_data = pd.DataFrame([{
     'Product_MRP': Product_MRP,
     'Store_Size': Store_Size,
     'Store_Location_City_Type': Store_Location_City_Type,  # Convert to 't' or 'f' # Type of city in which the store is located, like Tier 1, Tier 2, and Tier 3
-    'Store_Type': Store_Type, # Type of store depending on the products that are being sold there, like Departmental Store, Supermarket Type 1, Supermarket Type 2, and Food Mart
-    'Product_Id_char': Product_Id_char,
-    'Store_Age_Years': Store_Age_Years,
-    'Product_Type_Category': Product_Type_Category
+    'Store_Type': Store_Type
 }])
 
 # Make prediction when the "Predict" button is clicked
