@@ -47,16 +47,13 @@ def predict_rental_price():
     # Make prediction (get sales_revenue)
     predicted_sales_revenue = model.predict(input_data)[0]
 
-    # Calculate actual revenue
-    predicted_revenue = np.exp(predicted_sales_revenue)
+    # Convert NumPy value to Python float
+    predicted_revenue = round(float(predicted_sales_revenue), 2)
 
-    # Convert predicted_revenue to Python float
-    predicted_revenue = round(float(predicted_revenue), 2)
-    # The conversion above is needed as we convert the model prediction (sales revenue) to actual revenue using np.exp, which returns predictions as NumPy float32 values.
-    # When we send this value directly within a JSON response, Flask's jsonify function encounters a datatype error
-
-    # Return the actual price
-    return jsonify({'Predicted Price (in dollars)': predicted_revenue})
+    # Return prediction
+    return jsonify({
+        'Predicted Sales Revenue': predicted_revenue
+    })
 
 
 # Define an endpoint for batch prediction (POST request)
@@ -77,7 +74,7 @@ def predict_sales_revenue_batch():
     predicted_sales_revenues = model.predict(input_data).tolist()
 
     # Calculate actual prices
-    predicted_revenues = [round(float(np.exp(sales_revenue)), 2) for sales_revenue in predicted_sales_revenues]
+    predicted_revenues = [round(float(sales_revenue), 2) for sales_revenue in predicted_sales_revenues]
 
     output_dict = {
       "predictions": predicted_revenues
