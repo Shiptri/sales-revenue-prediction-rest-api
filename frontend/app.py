@@ -14,7 +14,7 @@ st.subheader("Online Prediction")
 # Collect user input for property features
 Product_Weight = st.number_input("Product_Weight", min_value=0, value=1)
 Product_Sugar_Content = st.selectbox("Product_Sugar_Content", ["low sugar", "regular", "no sugar"])
-Product_Allocated_Area = st.number_input("Product_Allocated_Area", min_value=1, value=.01)
+Product_Allocated_Area = st.number_input("Product_Allocated_Area")
 Product_MRP = st.number_input("Product_MRP", min_value=0, value=1)
 Store_Size = st.selectbox("Store_Size", ["High", "Medium","Low"])
 Store_Location_City_Type = st.selectbox("Store_Location_City_Type", ["Tier 1", "Tier 2","Tier 3"])
