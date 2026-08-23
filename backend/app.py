@@ -32,13 +32,13 @@ def predict_rental_price():
 
     # Extract relevant features from the JSON data
     payload = {
-      "Product_Weight": 12.66,
-      "Product_Sugar_Content": "Low Sugar",
-      "Product_Allocated_Area": 0.027,
-      "Product_MRP": 117.08,
-      "Store_Size": "Medium",
-      "Store_Location_City_Type": "Tier 2",
-      "Store_Type": "Supermarket Type2"
+      "Product_Weight": property_data['Product_Weight'],
+      "Product_Sugar_Content": property_data['Product_Sugar_Content'],
+      "Product_Allocated_Area": property_data['Product_Allocated_Area'],
+      "Product_MRP": property_data['Product_MRP'],
+      "Store_Size": property_data['Store_Size'],
+      "Store_Location_City_Type": property_data['Store_Location_City_Type'],
+      "Store_Type": property_data['Store_Type']
    }
 
     # Convert the extracted data into a Pandas DataFrame
