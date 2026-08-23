@@ -1,4 +1,3 @@
-%%writefile deployment_files/backend_files/app.py
 # Import necessary libraries
 import numpy as np
 import joblib  # For loading the serialized model
